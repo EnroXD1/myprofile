@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnroXD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #ff00cc, #333399, #ff00cc, #333399);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            animation: gradientFlow 3s ease infinite, textGlow 2s ease-in-out infinite alternate;
+            position: relative;
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+        
+        /* Анимация градиента (та же что и для лого) */
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Эффект свечения (та же что и для лого) */
+        @keyframes textGlow {
+            0% { 
+                text-shadow: 0 0 5px rgba(255, 0, 204, 0.3),
+                             0 0 10px rgba(51, 51, 153, 0.3);
+            }
+            100% { 
+                text-shadow: 0 0 15px rgba(255, 0, 204, 0.6),
+                             0 0 30px rgba(51, 51, 153, 0.6),
+                             0 0 40px rgba(51, 51, 153, 0.4);
+            }
+        }
+        
+        /* Анимированная линия (та же что и для лого) */
+        .hero h1::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff00cc, #333399);
+            transform: scaleX(0);
+            transform-origin: right;
+            animation: lineFlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes lineFlow {
+            0% { 
+                transform: scaleX(0);
+                transform-origin: right;
+            }
+            50% { 
+                transform: scaleX(1);
+                transform-origin: right;
+            }
+            51% { 
+                transform-origin: left;
+            }
+            100% { 
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Шапка */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            animation: fadeIn 1s ease;
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ff00cc, #333399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        nav a {
+            color: #e0e0ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        nav a:hover {
+            color: #ffffff;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff00cc, #333399);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Основной контент */
+        .hero {
+            text-align: center;
+            padding: 8rem 0;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #fff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff00cc, #333399);
+            color: white;
+            padding: 15px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(51, 51, 153, 0.5);
+        }
+        
+        /* Социальные сети */
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .social-icon:hover {
+            background: linear-gradient(90deg, #ff00cc, #333399);
+            transform: translateY(-8px);
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            nav ul {
+                gap: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo" id="animated-logo">EnroXD</div>
+
+<style>
+
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ff00cc, #333399, #ff00cc, #333399);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    animation: gradientFlow 3s ease infinite, textGlow 2s ease-in-out infinite alternate;
+    position: relative;
+    padding: 0 10px;
+}
+
+/* Анимация градиента */
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Эффект свечения */
+@keyframes textGlow {
+    0% { 
+        text-shadow: 0 0 5px rgba(255, 0, 204, 0.3),
+                     0 0 10px rgba(51, 51, 153, 0.3);
+    }
+    100% { 
+        text-shadow: 0 0 15px rgba(255, 0, 204, 0.6),
+                     0 0 30px rgba(51, 51, 153, 0.6),
+                     0 0 40px rgba(51, 51, 153, 0.4);
+    }
+}
+
+/* Добавим микродинамику букв */
+.logo::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #ff00cc, #333399);
+    transform: scaleX(0);
+    transform-origin: right;
+    animation: lineFlow 3s ease-in-out infinite;
+}
+
+@keyframes lineFlow {
+    0% { 
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+    50% { 
+        transform: scaleX(1);
+        transform-origin: right;
+    }
+    51% { 
+        transform-origin: left;
+    }
+    100% { 
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+}
+</style>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Главная</a></li>
+                    </ul>
+            </nav>
+        </header>
+        
+        <section class="hero">
+            <h1>EnroXD</h1>
+
+            <p>Добро пожаловать на мой персональный сайт! Здесь вы найдете информацию обо мне и моих достижениях в цифровом мире.</p>
+            <a href="https://t.me/EnroXD" class="cta-button">Связаться со мной</a>
+            
+            <div class="socials">
+                <a href="https://vk.com/lokkekenro" class="social-icon"><i class="fab fa-vk"></i></a>
+                <a href="https://t.me/EnroXD" class="social-icon"><i class="fab fa-telegram"></i></a>
+                <a href="https://discordapp.com/users/404327926595846146/" class="social-icon"><i class="fab fa-discord"></i></a>
+                <a href="https://github.com/EnroXD1" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="https://www.youtube.com/@enroxd562" class="social-icon"><i class="fab fa-youtube"></i></a>
+                <a href="https://steamcommunity.com/id/enroxd/" class="social-icon"><i class="fab fa-steam"></i></a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Дополнительная анимация для букв при загрузке
+        document.addEventListener('DOMContentLoaded', () => {
+            const letters = document.querySelectorAll('.hero h1 span');
+            letters.forEach((letter, index) => {
+                setTimeout(() => {
+                    letter.style.opacity = '1';
+                    letter.style.transform = 'translateY(0)';
+                }, 500 + (index * 100));
+                
+                // Начальное состояние для плавного появления
+                letter.style.opacity = '0';
+                letter.style.transform = 'translateY(30px)';
+                letter.style.transition = 'all 0.5s ease';
+            });
+        });
+        // Добавляем эффект параллакса
+        document.addEventListener('mousemove', (e) => {
+            const hero = document.querySelector('.hero');
+            const moveX = (e.pageX * -1 / 50);
+            const moveY = (e.pageY * -1 / 50);
+            hero.style.backgroundPosition = `${moveX}px ${moveY}px`;
+        });
+        
+       
+    </script>
+</body>
+</html>

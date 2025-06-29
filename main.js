@@ -134,8 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const text = `Имя: ${name}\nКонтакт: ${contact}\nСообщение: ${message}`;
     
     // Конфигурация Telegram Bot API (замените PLACEHOLDER_ на свои значения)
-    const token  = '938199022:AAGVH18Pcfn5OOZOg6Kn5cQ7n-DavdzMEr0';    // токен вашего бота от @BotFather
-    const chatId = '433797948';      // ID чата, куда отправлять сообщение
+    const token  = 'TOKEN';    // токен вашего бота от @BotFather
+    const chatId = 'CHAT';      // ID чата, куда отправлять сообщение
     
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
     const payload = { chat_id: chatId, text: text };

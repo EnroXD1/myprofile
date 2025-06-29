@@ -917,41 +917,65 @@
                 }, 1000);
             }
         }, 3000);
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    // Ждём, пока DOM загрузится
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contact-form');
+  if (!form) {
+    console.error('Форма #contact-form не найдена');
+    return;
+  }
+  
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    // Получаем актуальные данные из формы
-    const name = document.getElementById('name').value.trim();
-    const contact = document.getElementById('contact').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    // Проверка, чтобы поля не были пустыми
-    if (!name || !contact || !message) {
-        alert('Пожалуйста, заполните все поля!');
-        return;
+    // Находим поля формы
+    const nameInput    = document.getElementById('name');
+    const contactInput = document.getElementById('contact');
+    const messageInput = document.getElementById('message');
+    
+    // Проверяем наличие полей
+    if (!nameInput || !contactInput || !messageInput) {
+      console.error('Одно из полей формы не найдено');
+      return;
     }
-
-    // Формируем текст для Telegram
-    const text = `*Новое сообщение с сайта!*%0A%0A*Имя:* ${name}%0A*Контакты:* ${contact}%0A*Сообщение:*%0A${message}`;
-
-    // Ссылка для отправки
-    const telegramUrl = `https://api.telegram.org/bot938199022:AAGVH18Pcfn5OOZOg6Kn5cQ7n-DavdzMEr0/sendMessage?chat_id=433797948&text=${text}&parse_mode=Markdown`;
-
-    // Отправляем запрос
-    fetch(telegramUrl)
-        .then(response => response.json())
-        .then(result => {
-            if (result.ok) {
-                alert('Сообщение успешно отправлено!');
-                document.getElementById('contact-form').reset();
-            } else {
-                alert('Ошибка при отправке: ' + result.description);
-            }
-        })
-        .catch(error => {
-            console.error('Ошибка:', error);
-            alert('Не удалось отправить сообщение.');
-        });
+    
+    // Получаем и обрезаем значения
+    const name    = nameInput.value.trim();
+    const contact = contactInput.value.trim();
+    const message = messageInput.value.trim();
+    
+    // Если какие-то поля пустые, можно не отправлять
+    if (!name || !contact || !message) {
+      alert('Пожалуйста, заполните все поля формы.');
+      return;
+    }
+    
+    // Составляем текст сообщения
+    const text = `Имя: ${name}\nКонтакт: ${contact}\nСообщение: ${message}`;
+    
+    // Конфигурация Telegram Bot API (замените PLACEHOLDER_ на свои значения)
+    const token  = 'BOT_TOKEN';    // токен вашего бота от @BotFather
+    const chatId = 'CHAT_ID';      // ID чата, куда отправлять сообщение
+    
+    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+    const payload = { chat_id: chatId, text: text };
+    
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json();
+      if (!result.ok) {
+        console.error('Ошибка Telegram API:', result);
+      } else {
+        console.log('Сообщение отправлено', result);
+        form.reset(); // очистить форму после успешной отправки
+      }
+    } catch (err) {
+      console.error('Ошибка при fetch:', err);
+    }
+  });
 });
     </script>
 </body>

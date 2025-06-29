@@ -873,14 +873,14 @@
         });
         
         // Отправка формы
-       // const contactForm = document.querySelector('.contact-form');
-       // if (contactForm) {
-       //     contactForm.addEventListener('submit', (e) => {
-       //         e.preventDefault();
-       //         alert('Сообщение отправлено! Я свяжусь с вами в ближайшее время.');
-       //         contactForm.reset();
-       //     });
-       // }
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Сообщение отправлено! Я свяжусь с вами в ближайшее время.');
+                contactForm.reset();
+            });
+        }
         
         // Обновление активного пункта меню при прокрутке
         window.addEventListener('scroll', () => {

@@ -919,35 +919,46 @@
         }, 3000);
     document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
     // Получаем значения
     const name = document.getElementById('name').value;
     const contact = document.getElementById('contact').value;
     const message = document.getElementById('message').value;
-    
+
     // Формируем текст сообщения
     const text = `Новое сообщение с сайта!\n\nИмя: ${name}\nКонтакты: ${contact}\nСообщение:\n${message}`;
-    
-    // Кодируем для URL
-    const encodedText = encodeURIComponent(text);
-    
-    // Создаем ссылку для Telegram
-    const telegramUrl = `https://api.telegram.org/bot938199022:AAGVH18Pcfn5OOZOg6Kn5cQ7n-DavdzMEr0/sendMessage?chat_id=433797948&text=${encodedText}`;
-    
-    // Отправляем через скрытый iframe
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.src = telegramUrl;
-    document.body.appendChild(iframe);
-    
-    // Уведомление пользователю
-    alert('Сообщение отправлено!');
-    this.reset();
-    
-    // Удаляем iframe через 5 секунд
-    setTimeout(() => {
-        document.body.removeChild(iframe);
-    }, 5000);
+
+    // Адрес API
+    const telegramUrl = `https://api.telegram.org/bot938199022:AAGVH18Pcfn5OOZOg6Kn5cQ7n-DavdzMEr0/sendMessage`;
+
+    // Данные для запроса
+    const data = {
+        chat_id: '433797948',
+        text: text,
+        parse_mode: 'Markdown'
+    };
+
+    // Отправка запроса
+    fetch(telegramUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.ok) {
+            alert('Сообщение успешно отправлено!');
+            document.getElementById('contact-form').reset();
+        } else {
+            alert('Ошибка при отправке: ' + result.description);
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        alert('Не удалось отправить сообщение.');
+    });
 });
     </script>
 </body>

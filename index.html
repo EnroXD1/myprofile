@@ -920,45 +920,38 @@
     document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // Получаем значения
-    const name = document.getElementById('name').value;
-    const contact = document.getElementById('contact').value;
-    const message = document.getElementById('message').value;
+    // Получаем актуальные данные из формы
+    const name = document.getElementById('name').value.trim();
+    const contact = document.getElementById('contact').value.trim();
+    const message = document.getElementById('message').value.trim();
 
-    // Формируем текст сообщения
-    const text = `Новое сообщение с сайта!\n\nИмя: ${name}\nКонтакты: ${contact}\nСообщение:\n${message}`;
+    // Проверка, чтобы поля не были пустыми
+    if (!name || !contact || !message) {
+        alert('Пожалуйста, заполните все поля!');
+        return;
+    }
 
-    // Адрес API
-    const telegramUrl = `https://api.telegram.org/bot938199022:AAGVH18Pcfn5OOZOg6Kn5cQ7n-DavdzMEr0/sendMessage`;
+    // Формируем текст для Telegram
+    const text = `*Новое сообщение с сайта!*%0A%0A*Имя:* ${name}%0A*Контакты:* ${contact}%0A*Сообщение:*%0A${message}`;
 
-    // Данные для запроса
-    const data = {
-        chat_id: '433797948',
-        text: text,
-        parse_mode: 'Markdown'
-    };
+    // Ссылка для отправки
+    const telegramUrl = `https://api.telegram.org/bot938199022:AAGVH18Pcfn5OOZOg6Kn5cQ7n-DavdzMEr0/sendMessage?chat_id=433797948&text=${text}&parse_mode=Markdown`;
 
-    // Отправка запроса
-    fetch(telegramUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(result => {
-        if (result.ok) {
-            alert('Сообщение успешно отправлено!');
-            document.getElementById('contact-form').reset();
-        } else {
-            alert('Ошибка при отправке: ' + result.description);
-        }
-    })
-    .catch(error => {
-        console.error('Ошибка:', error);
-        alert('Не удалось отправить сообщение.');
-    });
+    // Отправляем запрос
+    fetch(telegramUrl)
+        .then(response => response.json())
+        .then(result => {
+            if (result.ok) {
+                alert('Сообщение успешно отправлено!');
+                document.getElementById('contact-form').reset();
+            } else {
+                alert('Ошибка при отправке: ' + result.description);
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Не удалось отправить сообщение.');
+        });
 });
     </script>
 </body>

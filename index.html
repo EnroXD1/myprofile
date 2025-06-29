@@ -873,14 +873,14 @@
         });
         
         // Отправка формы
-        const contactForm = document.querySelector('.contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Сообщение отправлено! Я свяжусь с вами в ближайшее время.');
-                contactForm.reset();
-            });
-        }
+       // const contactForm = document.querySelector('.contact-form');
+       // if (contactForm) {
+       //     contactForm.addEventListener('submit', (e) => {
+       //         e.preventDefault();
+       //         alert('Сообщение отправлено! Я свяжусь с вами в ближайшее время.');
+       //         contactForm.reset();
+       //     });
+       // }
         
         // Обновление активного пункта меню при прокрутке
         window.addEventListener('scroll', () => {
@@ -953,8 +953,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const text = `Имя: ${name}\nКонтакт: ${contact}\nСообщение: ${message}`;
     
     // Конфигурация Telegram Bot API (замените PLACEHOLDER_ на свои значения)
-    const token  = 'BOT_TOKEN';    // токен вашего бота от @BotFather
-    const chatId = 'CHAT_ID';      // ID чата, куда отправлять сообщение
+    const token  = '938199022:AAGVH18Pcfn5OOZOg6Kn5cQ7n-DavdzMEr0';    // токен вашего бота от @BotFather
+    const chatId = '433797948';      // ID чата, куда отправлять сообщение
     
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
     const payload = { chat_id: chatId, text: text };

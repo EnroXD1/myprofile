@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">EnroXD — персональный сайт</title>
+  <desc id="desc">Тёмная Material Design-обложка с названием EnroXD и морфирующими фигурами</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#140e0c"/>
+      <stop offset="0.58" stop-color="#19120f"/>
+      <stop offset="1" stop-color="#211513"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ffb47f"/>
+      <stop offset="0.52" stop-color="#ef759b"/>
+      <stop offset="1" stop-color="#925a9e"/>
+    </linearGradient>
+    <linearGradient id="headline" x1="100" y1="0" x2="760" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffad77"/>
+      <stop offset="0.58" stop-color="#f27898"/>
+      <stop offset="1" stop-color="#b67bc1"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <filter id="softGlow" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+    <clipPath id="surfaceClip">
+      <rect x="42" y="38" width="1116" height="554" rx="52"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <circle cx="1040" cy="104" r="210" fill="#733047" opacity="0.09" filter="url(#softGlow)"/>
+  <circle cx="128" cy="580" r="185" fill="#ff9f6e" opacity="0.06" filter="url(#softGlow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="42" y="38" width="1116" height="554" rx="52" fill="#251a16" stroke="#59423a" stroke-width="2"/>
+  </g>
+
+  <g clip-path="url(#surfaceClip)">
+    <path d="M894 524C937 423 1052 408 1158 451V592H830c13-21 35-38 64-68Z" fill="#3c2922"/>
+    <path d="M1110 72c49 15 78 57 66 100-13 48-55 76-101 59-44-16-69-59-54-102 14-41 49-70 89-57Z" fill="#ff9f6e" opacity="0.08"/>
+  </g>
+
+  <g font-family="Manrope, Segoe UI, Arial, sans-serif">
+    <g transform="translate(88 84)">
+      <rect width="112" height="42" rx="14" fill="#733047" stroke="#a98c81" stroke-width="1.5"/>
+      <text x="56" y="27" text-anchor="middle" font-size="15" font-weight="800" fill="#ffd9e2">SysAdmin</text>
+      <rect x="124" width="150" height="42" rx="14" fill="#733047" stroke="#a98c81" stroke-width="1.5"/>
+      <text x="199" y="27" text-anchor="middle" font-size="15" font-weight="800" fill="#ffd9e2">Virtualization</text>
+      <rect x="286" width="72" height="42" rx="14" fill="#733047" stroke="#a98c81" stroke-width="1.5"/>
+      <text x="322" y="27" text-anchor="middle" font-size="15" font-weight="800" fill="#ffd9e2">Git</text>
+    </g>
+
+    <text x="90" y="222" font-size="18" font-weight="800" letter-spacing="3" fill="#ffb0c4">STUDENT · TECH ENTHUSIAST</text>
+    <text x="80" y="377" font-size="150" font-weight="600" letter-spacing="-10" fill="#f6e6df">EnroXD</text>
+    <text x="90" y="443" font-size="32" font-weight="800" letter-spacing="-1.2" fill="url(#headline)">Системы, код и цифровые эксперименты.</text>
+    <text x="90" y="486" font-size="20" font-weight="600" fill="#d7c0b7">Персональный сайт в стиле Material Design 3</text>
+
+    <g transform="translate(90 524)">
+      <rect width="48" height="48" rx="17" fill="url(#brand)"/>
+      <rect x="2" y="2" width="44" height="44" rx="15" fill="none" stroke="#ffffff" stroke-opacity="0.52" stroke-width="2"/>
+      <text x="24" y="33" text-anchor="middle" font-size="24" font-weight="800" fill="#32101b">E</text>
+      <text x="64" y="22" font-size="17" font-weight="800" fill="#f6e6df">EnroXD</text>
+      <text x="64" y="44" font-size="14" font-weight="600" fill="#a98c81">enroxd1.github.io/myprofile</text>
+    </g>
+  </g>
+
+  <g transform="translate(970 248)">
+    <circle r="110" fill="#733047"/>
+    <circle r="82" fill="#ffd9e2" opacity="0.72"/>
+    <path d="M-31-51C-2-70 42-53 55-21 69 14 51 54 15 65-23 77-61 51-66 12-70-17-57-39-31-51Z" fill="#8d3f58"/>
+    <path d="M-23-42C-6-55 18-55 34-43-3-47-29-31-48-5-47-20-39-34-23-42Z" fill="#ffb0c4" opacity="0.45"/>
+  </g>
+
+  <g>
+    <circle cx="1084" cy="410" r="30" fill="#3c2922" stroke="#ff9f6e" stroke-width="2"/>
+    <circle cx="1084" cy="410" r="14" fill="#ff9f6e"/>
+    <circle cx="892" cy="128" r="24" fill="#3c2922" stroke="#a982c1" stroke-width="2"/>
+    <circle cx="892" cy="128" r="11" fill="#a982c1"/>
+    <circle cx="1092" cy="510" r="20" fill="#3c2922" stroke="#ee7197" stroke-width="2"/>
+    <circle cx="1092" cy="510" r="9" fill="#ee7197"/>
+  </g>
+</svg>

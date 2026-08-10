@@ -314,6 +314,113 @@ main {
     animation: float 7s ease-in-out infinite;
 }
 
+.material-bubbles {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.material-bubble {
+    --bubble-color: var(--primary);
+    --bubble-size: 48px;
+    --bubble-x: 82%;
+    --bubble-y: 35%;
+    position: absolute;
+    top: var(--bubble-y);
+    left: var(--bubble-x);
+    width: var(--bubble-size);
+    aspect-ratio: 1;
+    padding: 0;
+    border: 1px solid color-mix(in srgb, var(--bubble-color) 55%, var(--outline-soft));
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--bubble-color) 20%, var(--surface));
+    box-shadow:
+        inset 0 0 0 4px color-mix(in srgb, var(--bubble-color) 12%, transparent),
+        0 12px 28px color-mix(in srgb, var(--bubble-color) 18%, transparent);
+    cursor: pointer;
+    pointer-events: auto;
+    animation: bubble-drift 5.2s ease-in-out infinite;
+    transition: filter 180ms ease, box-shadow 180ms ease;
+}
+
+.material-bubble::before {
+    position: absolute;
+    inset: 22%;
+    border-radius: 42% 58% 63% 37% / 48% 38% 62% 52%;
+    background: var(--bubble-color);
+    content: "";
+    animation: loader-morph 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    transition: filter 180ms ease;
+}
+
+.material-bubble::after {
+    position: absolute;
+    inset: -2px;
+    border: 2px solid var(--bubble-color);
+    border-radius: 50%;
+    content: "";
+    opacity: 0;
+    transform: scale(0.7);
+}
+
+.material-bubble:hover {
+    filter: saturate(1.2) brightness(1.06);
+    box-shadow:
+        inset 0 0 0 5px color-mix(in srgb, var(--bubble-color) 18%, transparent),
+        0 16px 34px color-mix(in srgb, var(--bubble-color) 30%, transparent);
+}
+
+.material-bubble:hover::before {
+    filter: brightness(1.08);
+}
+
+.material-bubble:focus-visible {
+    outline: 3px solid var(--text);
+    outline-offset: 4px;
+}
+
+.bubble-one {
+    --bubble-color: #ee7197;
+    --bubble-size: 52px;
+}
+
+.bubble-two {
+    --bubble-color: #ff9f6e;
+    --bubble-size: 38px;
+    --bubble-x: 92%;
+    --bubble-y: 68%;
+    animation-delay: -1.7s;
+}
+
+.bubble-three {
+    --bubble-color: #a982c1;
+    --bubble-size: 44px;
+    --bubble-x: 74%;
+    --bubble-y: 83%;
+    animation-delay: -3.1s;
+}
+
+.material-bubble.is-popping {
+    animation: bubble-pop 380ms cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+.material-bubble.is-popping::after {
+    animation: bubble-ring 380ms cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+.material-bubble.is-waiting {
+    opacity: 0;
+    pointer-events: none;
+    animation: none;
+}
+
+.material-bubble.is-returning {
+    animation: bubble-return 460ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
 .chip-row {
     position: relative;
     z-index: 2;
@@ -691,6 +798,31 @@ main {
     padding: clamp(28px, 4vw, 38px);
 }
 
+.social-card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.social-card-loader {
+    display: grid;
+    width: 52px;
+    height: 52px;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--primary-container);
+    box-shadow: 0 9px 24px color-mix(in srgb, var(--primary) 16%, transparent);
+    animation: loader-container 1.8s ease-in-out infinite;
+}
+
+.social-card-loader .loader-shape {
+    width: 27px;
+    height: 27px;
+    animation-duration: 1.45s;
+}
+
 .social-links {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -822,6 +954,28 @@ main {
     100% { opacity: 0; transform: scale(1); }
 }
 
+@keyframes bubble-drift {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0) rotate(0deg); }
+    50% { transform: translate(-50%, -50%) translateY(-9px) rotate(5deg); }
+}
+
+@keyframes bubble-pop {
+    0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    45% { opacity: 1; transform: translate(-50%, -50%) scale(1.22); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.35); }
+}
+
+@keyframes bubble-ring {
+    0% { opacity: 0.8; transform: scale(0.7); }
+    100% { opacity: 0; transform: scale(2.1); }
+}
+
+@keyframes bubble-return {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.35); }
+    65% { opacity: 1; transform: translate(-50%, -50%) scale(1.14); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
 @media (max-width: 900px) {
     .desktop-nav {
         display: none;
@@ -919,6 +1073,10 @@ main {
         top: 105px;
         right: 26px;
         width: 82px;
+    }
+
+    .material-bubbles {
+        display: none;
     }
 
     .hero-copy {

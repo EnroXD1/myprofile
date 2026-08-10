@@ -178,4 +178,38 @@ rippleTargets.forEach((element) => {
     });
 });
 
+const bubblePositions = [
+    [{ x: '82%', y: '35%' }, { x: '90%', y: '48%' }, { x: '78%', y: '28%' }],
+    [{ x: '92%', y: '68%' }, { x: '84%', y: '76%' }, { x: '94%', y: '57%' }],
+    [{ x: '74%', y: '83%' }, { x: '69%', y: '69%' }, { x: '80%', y: '88%' }]
+];
+
+document.querySelectorAll('.material-bubble').forEach((bubble, bubbleIndex) => {
+    let positionIndex = 0;
+
+    bubble.addEventListener('click', () => {
+        if (bubble.classList.contains('is-popping') || bubble.classList.contains('is-waiting')) return;
+
+        bubble.classList.add('is-popping');
+        bubble.disabled = true;
+
+        window.setTimeout(() => {
+            bubble.classList.remove('is-popping');
+            bubble.classList.add('is-waiting');
+        }, prefersReducedMotion ? 80 : 380);
+
+        window.setTimeout(() => {
+            positionIndex = (positionIndex + 1) % bubblePositions[bubbleIndex].length;
+            const nextPosition = bubblePositions[bubbleIndex][positionIndex];
+            bubble.style.setProperty('--bubble-x', nextPosition.x);
+            bubble.style.setProperty('--bubble-y', nextPosition.y);
+            bubble.classList.remove('is-waiting');
+            bubble.classList.add('is-returning');
+            bubble.disabled = false;
+
+            window.setTimeout(() => bubble.classList.remove('is-returning'), prefersReducedMotion ? 80 : 460);
+        }, prefersReducedMotion ? 320 : 1500);
+    });
+});
+
 document.getElementById('year').textContent = new Date().getFullYear();

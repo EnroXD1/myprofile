@@ -63,6 +63,11 @@
     <main id="main" class="shell">
         <section id="home" class="hero surface reveal" aria-labelledby="hero-title">
             <div class="hero-orb" aria-hidden="true"></div>
+            <div class="material-bubbles" role="group" aria-label="Интерактивные декоративные пузыри">
+                <button class="material-bubble bubble-one" type="button" aria-label="Лопнуть розовый пузырь"></button>
+                <button class="material-bubble bubble-two" type="button" aria-label="Лопнуть оранжевый пузырь"></button>
+                <button class="material-bubble bubble-three" type="button" aria-label="Лопнуть сиреневый пузырь"></button>
+            </div>
             <div class="chip-row" aria-label="Основные направления">
                 <span class="chip">SysAdmin</span>
                 <span class="chip">Virtualization</span>
@@ -210,8 +215,15 @@
                 </a>
 
                 <div class="social-card surface">
-                    <p class="eyebrow">Ещё я здесь</p>
-                    <h3>Социальные сети</h3>
+                    <div class="social-card-head">
+                        <div>
+                            <p class="eyebrow">Ещё я здесь</p>
+                            <h3>Социальные сети</h3>
+                        </div>
+                        <span class="social-card-loader" aria-hidden="true">
+                            <span class="loader-shape"></span>
+                        </span>
+                    </div>
                     <div class="social-links">
                         <a href="https://github.com/EnroXD1" target="_blank" rel="noreferrer">
                             <span>GitHub</span><span class="material-symbols-rounded" aria-hidden="true">north_east</span>

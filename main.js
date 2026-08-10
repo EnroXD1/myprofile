@@ -12,6 +12,7 @@ const shareButton = document.querySelector('.share-button');
 const snackbar = document.querySelector('.snackbar');
 const snackbarText = document.querySelector('.snackbar-text');
 const snackbarClose = document.querySelector('.snackbar-close');
+const brandRefresh = document.querySelector('.brand-refresh');
 let snackbarTimer = 0;
 
 function hidePageLoader() {
@@ -178,6 +179,11 @@ snackbarClose.addEventListener('click', () => {
     hideSnackbar();
 });
 
+brandRefresh.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.reload();
+});
+
 const navLinks = [...document.querySelectorAll('.nav-link')];
 const sections = [...document.querySelectorAll('main section[id]')];
 const sectionLinks = [...document.querySelectorAll('a[href^="#"]')].filter((link) => {
@@ -291,7 +297,6 @@ const rippleTargets = document.querySelectorAll([
     '.theme-toggle',
     '.share-button',
     '.theme-option',
-    '.brand',
     '.skill',
     '.interest-card',
     '.project-card',

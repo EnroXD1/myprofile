@@ -3,7 +3,16 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 const pageLoader = document.querySelector('.page-loader');
 const themeButton = document.querySelector('.theme-toggle');
 const themeIcon = document.querySelector('.theme-icon');
+const themePicker = document.querySelector('.theme-picker');
+const themeMenu = document.querySelector('.theme-menu');
+const themeOptions = [...document.querySelectorAll('.theme-option')];
+const systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 const themeColor = document.querySelector('meta[name="theme-color"]');
+const shareButton = document.querySelector('.share-button');
+const snackbar = document.querySelector('.snackbar');
+const snackbarText = document.querySelector('.snackbar-text');
+const snackbarClose = document.querySelector('.snackbar-close');
+let snackbarTimer = 0;
 
 function hidePageLoader() {
     if (!pageLoader || pageLoader.classList.contains('is-hidden')) return;
@@ -20,26 +29,153 @@ function hidePageLoader() {
 if (document.readyState === 'complete') hidePageLoader();
 else window.addEventListener('load', hidePageLoader, { once: true });
 
-function applyTheme(theme, persist = true) {
-    const isDark = theme === 'dark';
-    root.dataset.theme = isDark ? 'dark' : 'light';
-    themeIcon.textContent = isDark ? 'dark_mode' : 'light_mode';
-    themeButton.setAttribute('aria-pressed', String(isDark));
-    themeButton.setAttribute('aria-label', isDark ? 'Включить светлую тему' : 'Включить тёмную тему');
-    themeColor.setAttribute('content', isDark ? '#19120f' : '#fff8f5');
+function applyThemeMode(mode, persist = true) {
+    const allowedModes = ['system', 'light', 'dark'];
+    const normalizedMode = allowedModes.includes(mode) ? mode : 'dark';
+    const resolvedTheme = normalizedMode === 'system'
+        ? (systemThemeQuery.matches ? 'dark' : 'light')
+        : normalizedMode;
+    const labels = {
+        system: 'Как в системе',
+        light: 'Светлая',
+        dark: 'Тёмная'
+    };
+    const icons = {
+        system: 'brightness_auto',
+        light: 'light_mode',
+        dark: 'dark_mode'
+    };
+
+    root.dataset.themeMode = normalizedMode;
+    root.dataset.theme = resolvedTheme;
+    themeIcon.textContent = icons[normalizedMode];
+    themeButton.setAttribute('aria-label', `Тема: ${labels[normalizedMode]}`);
+    themeColor.setAttribute('content', resolvedTheme === 'dark' ? '#19120f' : '#fff8f5');
+
+    themeOptions.forEach((option) => {
+        const isSelected = option.dataset.themeMode === normalizedMode;
+        option.setAttribute('aria-checked', String(isSelected));
+        option.classList.toggle('selected', isSelected);
+    });
 
     if (persist) {
         try {
-            localStorage.setItem('enroxd-theme', root.dataset.theme);
+            localStorage.setItem('enroxd-theme-mode', normalizedMode);
+            localStorage.removeItem('enroxd-theme');
         } catch (error) {
             // Сайт продолжит работать, даже если хранилище браузера недоступно.
         }
     }
 }
 
-applyTheme(root.dataset.theme, false);
+function openThemeMenu() {
+    themeMenu.hidden = false;
+    themeButton.setAttribute('aria-expanded', 'true');
+    themeMenu.querySelector('.theme-option.selected')?.focus();
+}
+
+function closeThemeMenu({ restoreFocus = false } = {}) {
+    themeMenu.hidden = true;
+    themeButton.setAttribute('aria-expanded', 'false');
+    if (restoreFocus) themeButton.focus();
+}
+
+applyThemeMode(root.dataset.themeMode || 'dark', false);
+
 themeButton.addEventListener('click', () => {
-    applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+    if (themeMenu.hidden) openThemeMenu();
+    else closeThemeMenu();
+});
+
+themeOptions.forEach((option, optionIndex) => {
+    option.addEventListener('click', () => {
+        applyThemeMode(option.dataset.themeMode);
+        closeThemeMenu({ restoreFocus: true });
+    });
+
+    option.addEventListener('keydown', (event) => {
+        if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        let nextIndex = optionIndex;
+        if (event.key === 'ArrowDown') nextIndex = (optionIndex + 1) % themeOptions.length;
+        if (event.key === 'ArrowUp') nextIndex = (optionIndex - 1 + themeOptions.length) % themeOptions.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = themeOptions.length - 1;
+        themeOptions[nextIndex].focus();
+    });
+});
+
+document.addEventListener('click', (event) => {
+    if (!themeMenu.hidden && !themePicker.contains(event.target)) closeThemeMenu();
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !themeMenu.hidden) closeThemeMenu({ restoreFocus: true });
+});
+
+const handleSystemThemeChange = () => {
+    if (root.dataset.themeMode === 'system') applyThemeMode('system', false);
+};
+if (systemThemeQuery.addEventListener) systemThemeQuery.addEventListener('change', handleSystemThemeChange);
+else systemThemeQuery.addListener(handleSystemThemeChange);
+
+function showSnackbar(message, icon = 'check_circle') {
+    window.clearTimeout(snackbarTimer);
+    snackbarText.textContent = message;
+    snackbar.querySelector('.snackbar-icon').textContent = icon;
+    snackbar.inert = false;
+    snackbar.setAttribute('aria-hidden', 'false');
+    snackbar.classList.add('show');
+    snackbarTimer = window.setTimeout(hideSnackbar, 3600);
+}
+
+function hideSnackbar() {
+    snackbar.classList.remove('show');
+    snackbar.inert = true;
+    snackbar.setAttribute('aria-hidden', 'true');
+}
+
+async function copyShareLink(url) {
+    try {
+        await navigator.clipboard.writeText(url);
+    } catch (error) {
+        const fallbackInput = document.createElement('textarea');
+        fallbackInput.value = url;
+        fallbackInput.setAttribute('readonly', '');
+        fallbackInput.style.position = 'fixed';
+        fallbackInput.style.opacity = '0';
+        document.body.append(fallbackInput);
+        fallbackInput.select();
+        document.execCommand('copy');
+        fallbackInput.remove();
+    }
+    showSnackbar('Ссылка скопирована');
+}
+
+shareButton.addEventListener('click', async () => {
+    const canonicalUrl = document.querySelector('link[rel="canonical"]')?.href || window.location.href;
+    const shareData = {
+        title: document.title,
+        text: 'Персональный сайт EnroXD',
+        url: canonicalUrl
+    };
+
+    if (navigator.share) {
+        try {
+            await navigator.share(shareData);
+            showSnackbar('Сайт отправлен', 'send');
+            return;
+        } catch (error) {
+            if (error.name === 'AbortError') return;
+        }
+    }
+
+    await copyShareLink(canonicalUrl);
+});
+
+snackbarClose.addEventListener('click', () => {
+    window.clearTimeout(snackbarTimer);
+    hideSnackbar();
 });
 
 const navLinks = [...document.querySelectorAll('.nav-link')];
@@ -153,11 +289,16 @@ const rippleTargets = document.querySelectorAll([
     '.button',
     '.nav-link',
     '.theme-toggle',
+    '.share-button',
+    '.theme-option',
     '.brand',
     '.skill',
     '.interest-card',
+    '.project-card',
+    '.project-link',
     '.contact-feature',
-    '.social-links a'
+    '.social-links a',
+    '.snackbar-close'
 ].join(','));
 
 rippleTargets.forEach((element) => {

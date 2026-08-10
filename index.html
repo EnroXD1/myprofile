@@ -28,17 +28,50 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
     <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "@id": "https://enroxd1.github.io/myprofile/#profile",
+        "url": "https://enroxd1.github.io/myprofile/",
+        "name": "EnroXD — персональный сайт",
+        "description": "Персональная страница EnroXD о технологиях, программировании и цифровых увлечениях.",
+        "dateModified": "2026-08-10",
+        "mainEntity": {
+            "@type": "Person",
+            "@id": "https://enroxd1.github.io/myprofile/#person",
+            "name": "EnroXD",
+            "alternateName": "@EnroXD",
+            "url": "https://enroxd1.github.io/myprofile/",
+            "description": "Студент и начинающий разработчик, увлечённый системным администрированием, виртуализацией и программированием.",
+            "knowsAbout": ["Python", "Django", "System administration", "Virtualization", "Git", "Artificial intelligence"],
+            "sameAs": [
+                "https://github.com/EnroXD1",
+                "https://t.me/EnroXD",
+                "https://vk.com/lokkekenro",
+                "https://www.youtube.com/@enroxd562",
+                "https://steamcommunity.com/id/enroxd/"
+            ]
+        }
+    }
+    </script>
     <title>EnroXD — персональный сайт</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0..1,0" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=eaabe1a">
+    <link rel="stylesheet" href="styles.css?v=3">
     <script>
         document.documentElement.classList.add('js');
         try {
-            document.documentElement.dataset.theme = localStorage.getItem('enroxd-theme') || 'dark';
+            const savedMode = localStorage.getItem('enroxd-theme-mode') || localStorage.getItem('enroxd-theme') || 'dark';
+            const resolvedTheme = savedMode === 'system'
+                ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                : savedMode;
+            document.documentElement.dataset.themeMode = savedMode;
+            document.documentElement.dataset.theme = resolvedTheme;
         } catch (error) {
+            document.documentElement.dataset.themeMode = 'dark';
             document.documentElement.dataset.theme = 'dark';
         }
     </script>
@@ -72,15 +105,44 @@
                 <span class="material-symbols-rounded" aria-hidden="true">interests</span>
                 Интересы
             </a>
+            <a class="nav-link" href="#projects">
+                <span class="material-symbols-rounded" aria-hidden="true">terminal</span>
+                Проекты
+            </a>
             <a class="nav-link" href="#contact">
                 <span class="material-symbols-rounded" aria-hidden="true">alternate_email</span>
                 Связь
             </a>
         </nav>
 
-        <button class="theme-toggle" type="button" aria-label="Включить светлую тему" aria-pressed="true">
-            <span class="material-symbols-rounded theme-icon" aria-hidden="true">dark_mode</span>
-        </button>
+        <div class="header-actions">
+            <button class="share-button" type="button" aria-label="Поделиться сайтом">
+                <span class="material-symbols-rounded" aria-hidden="true">share</span>
+            </button>
+
+            <div class="theme-picker">
+                <button class="theme-toggle" type="button" aria-label="Выбрать тему" aria-haspopup="menu" aria-expanded="false" aria-controls="theme-menu">
+                    <span class="material-symbols-rounded theme-icon" aria-hidden="true">dark_mode</span>
+                </button>
+                <div id="theme-menu" class="theme-menu surface" role="menu" aria-label="Цветовая тема" hidden>
+                    <button class="theme-option" type="button" role="menuitemradio" aria-checked="false" data-theme-mode="system">
+                        <span class="material-symbols-rounded" aria-hidden="true">brightness_auto</span>
+                        <span><strong>Как в системе</strong><small>Следовать настройкам устройства</small></span>
+                        <span class="material-symbols-rounded option-check" aria-hidden="true">check</span>
+                    </button>
+                    <button class="theme-option" type="button" role="menuitemradio" aria-checked="false" data-theme-mode="light">
+                        <span class="material-symbols-rounded" aria-hidden="true">light_mode</span>
+                        <span><strong>Светлая</strong><small>Светлые Material-поверхности</small></span>
+                        <span class="material-symbols-rounded option-check" aria-hidden="true">check</span>
+                    </button>
+                    <button class="theme-option" type="button" role="menuitemradio" aria-checked="false" data-theme-mode="dark">
+                        <span class="material-symbols-rounded" aria-hidden="true">dark_mode</span>
+                        <span><strong>Тёмная</strong><small>Тёплый тёмный фон</small></span>
+                        <span class="material-symbols-rounded option-check" aria-hidden="true">check</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main id="main" class="shell">
@@ -217,6 +279,64 @@
             </div>
         </section>
 
+        <section id="projects" class="page-section reveal" aria-labelledby="projects-title">
+            <div class="section-heading">
+                <span class="material-symbols-rounded" aria-hidden="true">terminal</span>
+                <h2 id="projects-title">Проекты</h2>
+            </div>
+            <p class="section-intro">Проектов пока немного — здесь только то, что действительно сделано и развивается.</p>
+
+            <div class="project-grid">
+                <article class="project-card surface project-ai">
+                    <div class="project-card-head">
+                        <span class="project-icon material-symbols-rounded" aria-hidden="true">smart_toy</span>
+                        <span class="chip chip-small">Активный · v1.8.1</span>
+                    </div>
+                    <p class="eyebrow">Python · aiogram</p>
+                    <h3>Gemini Telegram Bot</h3>
+                    <p>Асинхронный Telegram-бот с Gemini, OpenRouter и резервом Groq. Поддерживает мультимедиа, контекст, Telegram Business и автоматическое переключение AI-провайдеров.</p>
+                    <div class="project-tags" aria-label="Технологии проекта">
+                        <span>Python</span><span>SQLite</span><span>AI APIs</span>
+                    </div>
+                    <a class="project-link" href="https://github.com/EnroXD1/gemini_telegram_bot" target="_blank" rel="noreferrer">
+                        Исходный код<span class="material-symbols-rounded" aria-hidden="true">north_east</span>
+                    </a>
+                </article>
+
+                <article class="project-card surface project-django">
+                    <div class="project-card-head">
+                        <span class="project-icon material-symbols-rounded" aria-hidden="true">article</span>
+                        <span class="chip chip-small">Учебный</span>
+                    </div>
+                    <p class="eyebrow">Python · Django</p>
+                    <h3>Блогикум</h3>
+                    <p>Блог-платформа с публикациями, категориями, профилями, авторизацией, загрузкой изображений и системой комментариев.</p>
+                    <div class="project-tags" aria-label="Технологии проекта">
+                        <span>Django</span><span>SQLite</span><span>pytest</span>
+                    </div>
+                    <a class="project-link" href="https://github.com/EnroXD1/django_sprint4" target="_blank" rel="noreferrer">
+                        Исходный код<span class="material-symbols-rounded" aria-hidden="true">north_east</span>
+                    </a>
+                </article>
+
+                <article class="project-card surface project-profile">
+                    <div class="project-card-head">
+                        <span class="project-icon material-symbols-rounded" aria-hidden="true">web</span>
+                        <span class="chip chip-small">Live</span>
+                    </div>
+                    <p class="eyebrow">HTML · CSS · JavaScript</p>
+                    <h3>Этот профиль</h3>
+                    <p>Адаптивный персональный сайт в стиле Material Design 3: темы, анимации, доступная навигация и интерактивные компоненты без тяжёлого фреймворка.</p>
+                    <div class="project-tags" aria-label="Технологии проекта">
+                        <span>Material 3</span><span>GitHub Pages</span>
+                    </div>
+                    <a class="project-link" href="https://github.com/EnroXD1/myprofile" target="_blank" rel="noreferrer">
+                        Репозиторий<span class="material-symbols-rounded" aria-hidden="true">north_east</span>
+                    </a>
+                </article>
+            </div>
+        </section>
+
         <section id="contact" class="page-section reveal" aria-labelledby="contact-title">
             <div class="section-heading">
                 <span class="material-symbols-rounded" aria-hidden="true">alternate_email</span>
@@ -293,12 +413,24 @@
             <span class="material-symbols-rounded" aria-hidden="true">interests</span>
             <span>Интересы</span>
         </a>
+        <a class="nav-link" href="#projects" aria-label="Проекты">
+            <span class="material-symbols-rounded" aria-hidden="true">terminal</span>
+            <span>Проекты</span>
+        </a>
         <a class="nav-link" href="#contact" aria-label="Связь">
             <span class="material-symbols-rounded" aria-hidden="true">alternate_email</span>
             <span>Связь</span>
         </a>
     </nav>
 
-    <script src="main.js?v=eaabe1a"></script>
+    <div class="snackbar" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true" inert>
+        <span class="material-symbols-rounded snackbar-icon" aria-hidden="true">check_circle</span>
+        <span class="snackbar-text">Ссылка скопирована</span>
+        <button class="snackbar-close" type="button" aria-label="Закрыть уведомление">
+            <span class="material-symbols-rounded" aria-hidden="true">close</span>
+        </button>
+    </div>
+
+    <script src="main.js?v=3"></script>
 </body>
 </html>

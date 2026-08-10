@@ -71,13 +71,13 @@ function applyThemeMode(mode, persist = true) {
 function openThemeMenu() {
     themeMenu.hidden = false;
     themeButton.setAttribute('aria-expanded', 'true');
-    themeMenu.querySelector('.theme-option.selected')?.focus();
+    themeMenu.querySelector('.theme-option.selected')?.focus({ preventScroll: true });
 }
 
 function closeThemeMenu({ restoreFocus = false } = {}) {
     themeMenu.hidden = true;
     themeButton.setAttribute('aria-expanded', 'false');
-    if (restoreFocus) themeButton.focus();
+    if (restoreFocus) themeButton.focus({ preventScroll: true });
 }
 
 applyThemeMode(root.dataset.themeMode || 'dark', false);
@@ -101,7 +101,7 @@ themeOptions.forEach((option, optionIndex) => {
         if (event.key === 'ArrowUp') nextIndex = (optionIndex - 1 + themeOptions.length) % themeOptions.length;
         if (event.key === 'Home') nextIndex = 0;
         if (event.key === 'End') nextIndex = themeOptions.length - 1;
-        themeOptions[nextIndex].focus();
+        themeOptions[nextIndex].focus({ preventScroll: true });
     });
 });
 

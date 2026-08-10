@@ -1031,6 +1031,23 @@ main {
 
 .social-card {
     padding: clamp(28px, 4vw, 38px);
+    transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.social-card:hover {
+    border-color: var(--outline);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-5px);
+}
+
+.social-card:hover .social-card-loader {
+    border-radius: 18px;
+    box-shadow: 0 13px 30px color-mix(in srgb, var(--primary) 28%, transparent);
+    animation-duration: 1.2s;
+}
+
+.social-card:hover .social-card-loader .loader-shape {
+    animation-duration: 0.92s;
 }
 
 .social-card-head {
@@ -1050,6 +1067,7 @@ main {
     background: var(--primary-container);
     box-shadow: 0 9px 24px color-mix(in srgb, var(--primary) 16%, transparent);
     animation: loader-container 1.8s ease-in-out infinite;
+    transition: border-radius 260ms cubic-bezier(0.2, 0, 0, 1), box-shadow 220ms ease;
 }
 
 .social-card-loader .loader-shape {

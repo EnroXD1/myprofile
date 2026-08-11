@@ -1,0 +1,150 @@
+locale: ru
+site_url: https://enroxd1.github.io/myprofile/
+display_url: https://enroxd1.github.io/myprofile/
+logo_url: https://enroxd1.github.io/myprofile/favicon.svg
+
+backend:
+  name: github
+  repo: EnroXD1/myprofile
+  branch: main
+  auth_scope: public_repo
+  base_url: https://api.netlify.com
+  # После создания Netlify-проекта добавим: site_domain: ИМЯ-ПРОЕКТА.netlify.app
+  commit_messages:
+    update: 'Обновить содержимое сайта через админку'
+
+# На localhost Decap подключается к локальному репозиторию через decap-server.
+local_backend: true
+
+media_folder: uploads
+public_folder: /myprofile/uploads
+
+editor:
+  preview: false
+
+collections:
+  - name: site
+    label: Сайт
+    files:
+      - name: profile
+        label: Содержимое профиля
+        file: content/site.json
+        format: json
+        fields:
+          - label: Основная информация
+            name: identity
+            widget: object
+            collapsed: false
+            fields:
+              - { label: Имя или ник, name: display_name, widget: string }
+              - { label: Надпись над именем, name: hero_eyebrow, widget: string }
+              - { label: Главный слоган, name: tagline, widget: text }
+              - { label: Короткое описание, name: description, widget: text }
+              - { label: Надпись в блоке «Обо мне», name: about_eyebrow, widget: string }
+              - { label: Заголовок в блоке «Обо мне», name: about_heading, widget: string }
+              - label: Абзацы «Обо мне»
+                name: about_paragraphs
+                widget: list
+                min: 1
+                field: { label: Абзац, name: paragraph, widget: text }
+              - { label: Подпись в подвале, name: footer_tagline, widget: string }
+
+          - label: Чипы в верхнем блоке
+            name: focus_chips
+            widget: list
+            min: 1
+            field: { label: Текст, name: chip, widget: string }
+
+          - label: Навыки
+            label_singular: Навык
+            name: skills
+            widget: list
+            min: 1
+            collapsed: true
+            summary: '{{fields.label}}'
+            fields:
+              - { label: Название, name: label, widget: string }
+              - { label: Material-иконка, name: icon, widget: string, hint: 'Например: dns, code, palette или sports_esports' }
+
+          - label: Интересы
+            label_singular: Интерес
+            name: interests
+            widget: list
+            min: 1
+            collapsed: true
+            summary: '{{fields.title}}'
+            fields:
+              - { label: Название, name: title, widget: string }
+              - { label: Маленькая подпись, name: badge, widget: string }
+              - { label: Описание, name: description, widget: text }
+              - { label: Material-иконка, name: icon, widget: string, hint: 'Например: movie, headphones или local_pizza' }
+              - label: Цвет карточки
+                name: tone
+                widget: select
+                options:
+                  - { label: Оранжевый, value: orange }
+                  - { label: Сливовый, value: plum }
+                  - { label: Оливковый, value: olive }
+                  - { label: Синий, value: blue }
+                  - { label: Розовый, value: pink }
+                  - { label: Золотой, value: gold }
+
+          - { label: Вступление к проектам, name: projects_intro, widget: text }
+
+          - label: Проекты
+            label_singular: Проект
+            name: projects
+            widget: list
+            min: 1
+            collapsed: true
+            summary: '{{fields.title}} — {{fields.status}}'
+            fields:
+              - { label: Название, name: title, widget: string }
+              - { label: Статус, name: status, widget: string, hint: 'Например: Активный, Учебный или Live' }
+              - { label: Технологии над названием, name: eyebrow, widget: string }
+              - { label: Описание, name: description, widget: text }
+              - label: Теги
+                name: tags
+                widget: list
+                min: 1
+                field: { label: Тег, name: tag, widget: string }
+              - { label: Ссылка, name: url, widget: string, hint: 'Полный адрес, начинающийся с https://' }
+              - { label: Текст кнопки, name: link_label, widget: string }
+              - { label: Material-иконка, name: icon, widget: string, hint: 'Например: smart_toy, article или web' }
+              - label: Цвет карточки
+                name: tone
+                widget: select
+                options:
+                  - { label: Фиолетовый, value: ai }
+                  - { label: Зелёный, value: django }
+                  - { label: Розовый, value: profile }
+
+          - label: Основной контакт
+            name: contact
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Маленькая подпись, name: eyebrow, widget: string }
+              - { label: Название сервиса, name: title, widget: string }
+              - { label: Описание, name: description, widget: text }
+              - { label: Ник или адрес, name: handle, widget: string }
+              - { label: Ссылка, name: url, widget: string, hint: 'Полный адрес, начинающийся с https://' }
+
+          - label: Заголовок социальных сетей
+            name: social_heading
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Маленькая подпись, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+
+          - label: Социальные сети
+            label_singular: Ссылка
+            name: socials
+            widget: list
+            min: 1
+            collapsed: true
+            summary: '{{fields.label}}'
+            fields:
+              - { label: Название, name: label, widget: string }
+              - { label: Ссылка, name: url, widget: string, hint: 'Полный адрес, начинающийся с https://' }

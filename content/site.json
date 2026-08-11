@@ -1,0 +1,170 @@
+{
+  "identity": {
+    "display_name": "EnroXD",
+    "hero_eyebrow": "student · tech enthusiast",
+    "tagline": "Изучаю системы, код и всё, что живёт в цифровом мире.",
+    "description": "Студент, начинающий разработчик и человек, который может одинаково долго обсуждать виртуализацию, Dota 2 и хорошую острую пиццу.",
+    "about_eyebrow": "Коротко и по делу",
+    "about_heading": "Привет, я EnroXD",
+    "about_paragraphs": [
+      "Я студент третьего курса университета, увлечённый технологиями и всем, что связано с цифровым миром.",
+      "Сейчас активно изучаю основы программирования. В свободное время играю, смотрю фильмы и аниме, а ещё исследую новые технологии."
+    ],
+    "footer_tagline": "built with curiosity and pizza."
+  },
+  "focus_chips": [
+    "SysAdmin",
+    "Virtualization",
+    "Git"
+  ],
+  "skills": [
+    {
+      "label": "SysAdmin",
+      "icon": "dns"
+    },
+    {
+      "label": "Virtualization",
+      "icon": "deployed_code"
+    },
+    {
+      "label": "Git",
+      "icon": "commit"
+    },
+    {
+      "label": "Photoshop",
+      "icon": "palette"
+    },
+    {
+      "label": "Dota 2",
+      "icon": "sports_esports"
+    },
+    {
+      "label": "Valorant",
+      "icon": "target"
+    }
+  ],
+  "interests": [
+    {
+      "title": "Видеоигры",
+      "badge": "Любимое",
+      "description": "Люблю RPG, шутеры и стратегии. Чаще всего запускаю Dota 2 и Valorant.",
+      "icon": "sports_esports",
+      "tone": "orange"
+    },
+    {
+      "title": "Программирование",
+      "badge": "Изучаю",
+      "description": "Разбираюсь в основах разработки, работе нейросетей и полезных цифровых инструментах.",
+      "icon": "code",
+      "tone": "plum"
+    },
+    {
+      "title": "Кино и сериалы",
+      "badge": "Фаворит",
+      "description": "Фантастика, комедии и аниме. В любимых — «Прометей», «Триггер» и «Варкрафт».",
+      "icon": "movie",
+      "tone": "olive"
+    },
+    {
+      "title": "Музыка",
+      "badge": "Для души",
+      "description": "Электроника, тяжёлый металл и рок: Slaughter to Prevail, Falling in Reverse и Lorna Shore.",
+      "icon": "headphones",
+      "tone": "blue"
+    },
+    {
+      "title": "IT-технологии",
+      "badge": "Новинки",
+      "description": "Слежу за искусственным интеллектом, VR, кибербезопасностью и новыми подходами к инфраструктуре.",
+      "icon": "memory",
+      "tone": "pink"
+    },
+    {
+      "title": "Пицца",
+      "badge": "Важно",
+      "description": "Пицца — это тема. Особенно острая. Но на одной пицце далеко не уедешь… наверное.",
+      "icon": "local_pizza",
+      "tone": "gold"
+    }
+  ],
+  "projects_intro": "Проектов пока немного — здесь только то, что действительно сделано и развивается.",
+  "projects": [
+    {
+      "title": "Gemini Telegram Bot",
+      "status": "Активный · v1.8.2",
+      "eyebrow": "Python · aiogram",
+      "description": "Асинхронный Telegram-бот с Gemini, OpenRouter и резервом Groq. Поддерживает мультимедиа, контекст, Telegram Business и автоматическое переключение AI-провайдеров.",
+      "tags": [
+        "Python",
+        "SQLite",
+        "AI APIs"
+      ],
+      "url": "https://github.com/EnroXD1/gemini_telegram_bot",
+      "link_label": "Исходный код",
+      "icon": "smart_toy",
+      "tone": "ai"
+    },
+    {
+      "title": "Блогикум",
+      "status": "Учебный",
+      "eyebrow": "Python · Django",
+      "description": "Блог-платформа с публикациями, категориями, профилями, авторизацией, загрузкой изображений и системой комментариев.",
+      "tags": [
+        "Django",
+        "SQLite",
+        "pytest"
+      ],
+      "url": "https://github.com/EnroXD1/django_sprint4",
+      "link_label": "Исходный код",
+      "icon": "article",
+      "tone": "django"
+    },
+    {
+      "title": "Этот профиль",
+      "status": "Live",
+      "eyebrow": "HTML · CSS · JavaScript",
+      "description": "Адаптивный персональный сайт в стиле Material Design 3: темы, анимации, доступная навигация и интерактивные компоненты без тяжёлого фреймворка.",
+      "tags": [
+        "Material 3",
+        "GitHub Pages"
+      ],
+      "url": "https://github.com/EnroXD1/myprofile",
+      "link_label": "Репозиторий",
+      "icon": "web",
+      "tone": "profile"
+    }
+  ],
+  "contact": {
+    "eyebrow": "Быстрее всего",
+    "title": "Telegram",
+    "description": "Личные сообщения. Обычно отвечаю здесь.",
+    "handle": "@EnroXD",
+    "url": "https://t.me/EnroXD"
+  },
+  "social_heading": {
+    "eyebrow": "Ещё я здесь",
+    "title": "Социальные сети"
+  },
+  "socials": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/EnroXD1"
+    },
+    {
+      "label": "VK",
+      "url": "https://vk.com/lokkekenro"
+    },
+    {
+      "label": "Discord",
+      "url": "https://discordapp.com/users/404327926595846146/"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@enroxd562"
+    },
+    {
+      "label": "Steam",
+      "url": "https://steamcommunity.com/id/enroxd/"
+    }
+  ]
+}

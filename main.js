@@ -27,8 +27,18 @@ function hidePageLoader() {
     }, remainingTime);
 }
 
-if (document.readyState === 'complete') hidePageLoader();
-else window.addEventListener('load', hidePageLoader, { once: true });
+async function finishPageLoad() {
+    if (window.siteContentReady) {
+        await Promise.race([
+            window.siteContentReady,
+            new Promise((resolve) => window.setTimeout(resolve, 900))
+        ]);
+    }
+    hidePageLoader();
+}
+
+if (document.readyState === 'complete') finishPageLoad();
+else window.addEventListener('load', finishPageLoad, { once: true });
 
 function applyThemeMode(mode, persist = true) {
     const allowedModes = ['system', 'light', 'dark'];
@@ -291,7 +301,7 @@ if (prefersReducedMotion) {
     document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 }
 
-const rippleTargets = document.querySelectorAll([
+const rippleSelector = [
     '.button',
     '.nav-link',
     '.theme-toggle',
@@ -304,9 +314,11 @@ const rippleTargets = document.querySelectorAll([
     '.contact-feature',
     '.social-links a',
     '.snackbar-close'
-].join(','));
+].join(',');
 
-rippleTargets.forEach((element) => {
+function prepareRippleSurface(element) {
+    if (element.dataset.rippleReady === 'true') return;
+    element.dataset.rippleReady = 'true';
     element.classList.add('md-ripple-surface');
     element.addEventListener('pointerdown', (event) => {
         if (prefersReducedMotion || event.button !== 0) return;
@@ -322,7 +334,14 @@ rippleTargets.forEach((element) => {
         element.append(ripple);
         ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
     });
-});
+}
+
+function prepareRippleSurfaces() {
+    document.querySelectorAll(rippleSelector).forEach(prepareRippleSurface);
+}
+
+prepareRippleSurfaces();
+window.siteContentReady?.then(prepareRippleSurfaces);
 
 const bubblePositions = [
     [{ x: '82%', y: '35%' }, { x: '90%', y: '48%' }, { x: '78%', y: '28%' }],

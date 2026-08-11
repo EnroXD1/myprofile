@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#19120f">
+    <title>EnroXD — управление сайтом</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <style>
+        :root {
+            color-scheme: dark;
+            font-family: Manrope, system-ui, sans-serif;
+            background: #19120f;
+            color: #f6e6df;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .cms-loader {
+            position: fixed;
+            inset: 0;
+            display: grid;
+            place-content: center;
+            justify-items: center;
+            gap: 16px;
+            background: #19120f;
+        }
+
+        .cms-loader-shape {
+            width: 54px;
+            height: 54px;
+            border-radius: 42% 58% 63% 37% / 48% 38% 62% 52%;
+            background: #ffb0c4;
+            animation: cms-morph 1.1s ease-in-out infinite;
+        }
+
+        .cms-loader p {
+            margin: 0;
+            color: #d7c0b7;
+            font-weight: 700;
+        }
+
+        @keyframes cms-morph {
+            0%, 100% { border-radius: 42% 58% 63% 37% / 48% 38% 62% 52%; transform: rotate(0deg); }
+            50% { border-radius: 64% 36% 42% 58% / 38% 58% 42% 62%; transform: rotate(180deg); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cms-loader-shape { animation: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cms-loader" aria-label="Загрузка панели управления">
+        <span class="cms-loader-shape" aria-hidden="true"></span>
+        <p>Загружаю панель управления…</p>
+    </div>
+
+    <script src="https://unpkg.com/decap-cms@3.15.1/dist/decap-cms.js"></script>
+    <script>
+        const cmsLoader = document.querySelector('.cms-loader');
+        const cmsRoot = document.getElementById('nc-root');
+
+        function removeCmsLoader() {
+            if (!cmsRoot?.childElementCount) return;
+            cmsLoader?.remove();
+            cmsObserver.disconnect();
+        }
+
+        const cmsObserver = new MutationObserver(removeCmsLoader);
+        if (cmsRoot) cmsObserver.observe(cmsRoot, { childList: true, subtree: true });
+        removeCmsLoader();
+    </script>
+</body>
+</html>

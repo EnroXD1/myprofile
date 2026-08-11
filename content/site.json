@@ -1,16 +1,10 @@
 {
-  "identity": {
-    "display_name": "EnroXD",
-    "hero_eyebrow": "student · tech enthusiast",
-    "tagline": "Изучаю системы, код и всё, что живёт в цифровом мире.",
-    "description": "Студент, начинающий разработчик и человек, который может одинаково долго обсуждать виртуализацию, Dota 2 и хорошую острую пиццу.",
-    "about_eyebrow": "Коротко и по делу",
-    "about_heading": "Привет, я EnroXD",
-    "about_paragraphs": [
-      "Я студент третьего курса университета, увлечённый технологиями и всем, что связано с цифровым миром.",
-      "Сейчас активно изучаю основы программирования. В свободное время играю, смотрю фильмы и аниме, а ещё исследую новые технологии."
-    ],
-    "footer_tagline": "built with curiosity and pizza."
+  "contact": {
+    "eyebrow": "Быстрее всего",
+    "title": "Telegram",
+    "description": "Личные сообщения. Обычно отвечаю здесь.",
+    "handle": "@EnroXD",
+    "url": "https://t.me/EnroXD"
   },
   "focus_chips": [
     "SysAdmin",
@@ -35,19 +29,42 @@
       "icon": "palette"
     },
     {
-      "label": "Dota 2",
+      "label": "Path of Exile",
       "icon": "sports_esports"
     },
     {
-      "label": "Valorant",
+      "label": "Counter-Strike 2",
       "icon": "target"
     }
   ],
+  "socials": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/EnroXD1"
+    },
+    {
+      "label": "VK",
+      "url": "https://vk.com/lokkekenro"
+    },
+    {
+      "label": "Discord",
+      "url": "https://discordapp.com/users/404327926595846146/"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@enroxd562"
+    },
+    {
+      "label": "Steam",
+      "url": "https://steamcommunity.com/id/enroxd/"
+    }
+  ],
+  "projects_intro": "Проектов пока немного — здесь только то, что действительно сделано и развивается.",
   "interests": [
     {
       "title": "Видеоигры",
       "badge": "Любимое",
-      "description": "Люблю RPG, шутеры и стратегии. Чаще всего запускаю Dota 2 и Valorant.",
+      "description": "Люблю RPG, шутеры и стратегии. Чаще всего запускаю Path of Exile и Counter-Strike 2.",
       "icon": "sports_esports",
       "tone": "orange"
     },
@@ -87,84 +104,67 @@
       "tone": "gold"
     }
   ],
-  "projects_intro": "Проектов пока немного — здесь только то, что действительно сделано и развивается.",
+  "social_heading": {
+    "eyebrow": "Ещё я здесь",
+    "title": "Социальные сети"
+  },
   "projects": [
     {
-      "title": "Gemini Telegram Bot",
-      "status": "Активный · v1.8.2",
       "eyebrow": "Python · aiogram",
-      "description": "Асинхронный Telegram-бот с Gemini, OpenRouter и резервом Groq. Поддерживает мультимедиа, контекст, Telegram Business и автоматическое переключение AI-провайдеров.",
+      "url": "https://github.com/EnroXD1/gemini_telegram_bot",
+      "link_label": "Исходный код",
+      "tone": "ai",
+      "status": "Активный · v1.8.2",
+      "title": "Gemini Telegram Bot",
       "tags": [
         "Python",
         "SQLite",
         "AI APIs"
       ],
-      "url": "https://github.com/EnroXD1/gemini_telegram_bot",
-      "link_label": "Исходный код",
       "icon": "smart_toy",
-      "tone": "ai"
+      "description": "Асинхронный Telegram-бот с Gemini, OpenRouter и резервом Groq. Поддерживает мультимедиа, контекст, Telegram Business и автоматическое переключение AI-провайдеров."
     },
     {
-      "title": "Блогикум",
-      "status": "Учебный",
       "eyebrow": "Python · Django",
-      "description": "Блог-платформа с публикациями, категориями, профилями, авторизацией, загрузкой изображений и системой комментариев.",
+      "url": "https://github.com/EnroXD1/django_sprint4",
+      "link_label": "Исходный код",
+      "tone": "django",
+      "status": "Учебный",
+      "title": "Блогикум",
       "tags": [
         "Django",
         "SQLite",
         "pytest"
       ],
-      "url": "https://github.com/EnroXD1/django_sprint4",
-      "link_label": "Исходный код",
       "icon": "article",
-      "tone": "django"
+      "description": "Блог-платформа с публикациями, категориями, профилями, авторизацией, загрузкой изображений и системой комментариев."
     },
     {
-      "title": "Этот профиль",
-      "status": "Live",
       "eyebrow": "HTML · CSS · JavaScript",
-      "description": "Адаптивный персональный сайт в стиле Material Design 3: темы, анимации, доступная навигация и интерактивные компоненты без тяжёлого фреймворка.",
+      "url": "https://github.com/EnroXD1/myprofile",
+      "link_label": "Репозиторий",
+      "tone": "profile",
+      "status": "Live",
+      "title": "Этот профиль",
       "tags": [
         "Material 3",
         "GitHub Pages"
       ],
-      "url": "https://github.com/EnroXD1/myprofile",
-      "link_label": "Репозиторий",
       "icon": "web",
-      "tone": "profile"
+      "description": "Адаптивный персональный сайт в стиле Material Design 3: темы, анимации, доступная навигация и интерактивные компоненты без тяжёлого фреймворка."
     }
   ],
-  "contact": {
-    "eyebrow": "Быстрее всего",
-    "title": "Telegram",
-    "description": "Личные сообщения. Обычно отвечаю здесь.",
-    "handle": "@EnroXD",
-    "url": "https://t.me/EnroXD"
-  },
-  "social_heading": {
-    "eyebrow": "Ещё я здесь",
-    "title": "Социальные сети"
-  },
-  "socials": [
-    {
-      "label": "GitHub",
-      "url": "https://github.com/EnroXD1"
-    },
-    {
-      "label": "VK",
-      "url": "https://vk.com/lokkekenro"
-    },
-    {
-      "label": "Discord",
-      "url": "https://discordapp.com/users/404327926595846146/"
-    },
-    {
-      "label": "YouTube",
-      "url": "https://www.youtube.com/@enroxd562"
-    },
-    {
-      "label": "Steam",
-      "url": "https://steamcommunity.com/id/enroxd/"
-    }
-  ]
+  "identity": {
+    "display_name": "EnroXD",
+    "hero_eyebrow": "student · tech enthusiast",
+    "tagline": "Изучаю системы, код и всё, что живёт в цифровом мире.",
+    "description": "Студент, начинающий разработчик и человек, который может одинаково долго обсуждать виртуализацию, Path of Exile и хорошую острую пиццу.",
+    "about_eyebrow": "Коротко и по делу",
+    "about_heading": "Привет, я EnroXD",
+    "about_paragraphs": [
+      "Я студент третьего курса университета, увлечённый технологиями и всем, что связано с цифровым миром.",
+      "Сейчас активно изучаю основы программирования. В свободное время играю, смотрю фильмы и аниме, а ещё исследую новые технологии."
+    ],
+    "footer_tagline": "built with curiosity and pizza."
+  }
 }

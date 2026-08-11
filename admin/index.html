@@ -7,6 +7,14 @@
     <meta name="theme-color" content="#19120f">
     <title>EnroXD — управление сайтом</title>
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <script>
+        if (window.location.hostname === 'enroxd1.github.io') {
+            const cmsUrl = new URL('https://verdant-youtiao-be014b.netlify.app/admin/');
+            cmsUrl.search = window.location.search;
+            cmsUrl.hash = window.location.hash;
+            window.location.replace(cmsUrl);
+        }
+    </script>
     <style>
         :root {
             color-scheme: dark;

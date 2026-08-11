@@ -9,7 +9,7 @@ backend:
   branch: main
   auth_scope: public_repo
   base_url: https://api.netlify.com
-  # После создания Netlify-проекта добавим: site_domain: ИМЯ-ПРОЕКТА.netlify.app
+  site_domain: verdant-youtiao-be014b.netlify.app
   commit_messages:
     update: 'Обновить содержимое сайта через админку'
 

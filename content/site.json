@@ -110,6 +110,21 @@
   },
   "projects": [
     {
+      "eyebrow": "PWA · MES/MOM",
+      "url": "https://github.com/EnroXD1/mes-navigator",
+      "link_label": "Исходный код",
+      "tone": "profile",
+      "status": "Live · v0.3.0",
+      "title": "MES Navigator",
+      "tags": [
+        "JavaScript",
+        "PWA",
+        "GitHub Pages"
+      ],
+      "icon": "precision_manufacturing",
+      "description": "«Цех знаний» — интерактивный тренажёр по промышленным информационным системам: 100 тем, пошаговые уроки, задания, экзамен и симулятор производственного заказа."
+    },
+    {
       "eyebrow": "Python · aiogram",
       "url": "https://github.com/EnroXD1/gemini_telegram_bot",
       "link_label": "Исходный код",

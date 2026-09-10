@@ -867,7 +867,7 @@ main {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
 }
 
@@ -977,10 +977,12 @@ main {
     transform: translate(3px, -3px);
 }
 
+.project-mes { background: color-mix(in srgb, #31566f 38%, var(--surface)); }
 .project-ai { background: color-mix(in srgb, #513a72 38%, var(--surface)); }
 .project-django { background: color-mix(in srgb, #315c50 34%, var(--surface)); }
 .project-profile { background: color-mix(in srgb, #794057 30%, var(--surface)); }
 
+:root[data-theme="light"] .project-mes { background: #e8f2f8; }
 :root[data-theme="light"] .project-ai { background: #f3ecff; }
 :root[data-theme="light"] .project-django { background: #e9f5f0; }
 :root[data-theme="light"] .project-profile { background: #f9e9ef; }

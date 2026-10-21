@@ -110,11 +110,14 @@ collections:
                 field: { label: Тег, name: tag, widget: string }
               - { label: Ссылка, name: url, widget: string, hint: 'Полный адрес, начинающийся с https://' }
               - { label: Текст кнопки, name: link_label, widget: string }
+              - { label: Сайт проекта, name: demo_url, widget: string, required: false, hint: 'Необязательная ссылка https:// для кнопки «Открыть сайт»' }
               - { label: Material-иконка, name: icon, widget: string, hint: 'Например: smart_toy, article или web' }
               - label: Цвет карточки
                 name: tone
                 widget: select
                 options:
+                  - { label: Оранжевый, value: workshop }
+                  - { label: Синий, value: mes }
                   - { label: Фиолетовый, value: ai }
                   - { label: Зелёный, value: django }
                   - { label: Розовый, value: profile }

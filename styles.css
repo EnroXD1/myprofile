@@ -946,6 +946,18 @@ main {
     font-weight: 800;
 }
 
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.project-links .project-link {
+    flex: 1 1 160px;
+    margin-top: 0;
+}
+
 .project-link {
     display: flex;
     min-height: 44px;
@@ -977,11 +989,13 @@ main {
     transform: translate(3px, -3px);
 }
 
+.project-workshop { background: color-mix(in srgb, #8e4900 36%, var(--surface)); }
 .project-mes { background: color-mix(in srgb, #31566f 38%, var(--surface)); }
 .project-ai { background: color-mix(in srgb, #513a72 38%, var(--surface)); }
 .project-django { background: color-mix(in srgb, #315c50 34%, var(--surface)); }
 .project-profile { background: color-mix(in srgb, #794057 30%, var(--surface)); }
 
+:root[data-theme="light"] .project-workshop { background: #fff0df; }
 :root[data-theme="light"] .project-mes { background: #e8f2f8; }
 :root[data-theme="light"] .project-ai { background: #f3ecff; }
 :root[data-theme="light"] .project-django { background: #e9f5f0; }

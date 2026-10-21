@@ -21,6 +21,14 @@
       "icon": "deployed_code"
     },
     {
+      "label": "Python",
+      "icon": "code"
+    },
+    {
+      "label": "JavaScript",
+      "icon": "javascript"
+    },
+    {
       "label": "Git",
       "icon": "commit"
     },
@@ -59,7 +67,7 @@
       "url": "https://steamcommunity.com/id/enroxd/"
     }
   ],
-  "projects_intro": "Проектов пока немного — здесь только то, что действительно сделано и развивается.",
+  "projects_intro": "Веб-инструменты, Telegram-боты и учебные проекты. Здесь можно попробовать приложения и посмотреть, как они устроены.",
   "interests": [
     {
       "title": "Видеоигры",
@@ -110,26 +118,43 @@
   },
   "projects": [
     {
+      "eyebrow": "JavaScript · обработка медиа",
+      "url": "https://github.com/EnroXD1/workshop-studio",
+      "demo_url": "https://enroxd1.github.io/workshop-studio/",
+      "link_label": "Исходный код",
+      "tone": "workshop",
+      "status": "Live · v1.0.0",
+      "title": "Workshop Studio",
+      "tags": [
+        "JavaScript",
+        "GIF / PNG",
+        "Steam Workshop"
+      ],
+      "icon": "movie_edit",
+      "description": "Конструктор оформления Steam Workshop: нарезка видео, GIF и изображений на 1–3 ряда, настройка кадра и экспорт в ZIP. Медиа обрабатываются прямо в браузере; есть автономная HTML-версия."
+    },
+    {
       "eyebrow": "PWA · MES/MOM",
       "url": "https://github.com/EnroXD1/mes-navigator",
       "link_label": "Исходный код",
-      "tone": "profile",
-      "status": "Live · v0.3.0",
+      "tone": "mes",
+      "status": "Live · v0.8.0",
       "title": "MES Navigator",
       "tags": [
         "JavaScript",
         "PWA",
-        "GitHub Pages"
+        "Firebase"
       ],
       "icon": "precision_manufacturing",
-      "description": "«Цех знаний» — интерактивный тренажёр по промышленным информационным системам: 100 тем, пошаговые уроки, задания, экзамен и симулятор производственного заказа."
+      "description": "«Цех знаний» — тренажёр по MES/MOM: 100 тем, трек PD96 из 25 модулей, интервальное повторение и ИИ-наставник. Работает офлайн и синхронизирует прогресс через Firebase.",
+      "demo_url": "https://enroxd1.github.io/mes-navigator/"
     },
     {
       "eyebrow": "Python · aiogram",
       "url": "https://github.com/EnroXD1/gemini_telegram_bot",
       "link_label": "Исходный код",
       "tone": "ai",
-      "status": "Активный · v1.8.2",
+      "status": "Активный · v1.17.1",
       "title": "Gemini Telegram Bot",
       "tags": [
         "Python",
@@ -137,7 +162,22 @@
         "AI APIs"
       ],
       "icon": "smart_toy",
-      "description": "Асинхронный Telegram-бот с Gemini, OpenRouter и резервом Groq. Поддерживает мультимедиа, контекст, Telegram Business и автоматическое переключение AI-провайдеров."
+      "description": "Асинхронный Telegram-бот с Gemini, OpenRouter и Groq: мультимедиа, контекст диалога, нативные формулы, группы и Telegram Business. Автоматически переключает AI-провайдеров и ведёт диагностику моделей."
+    },
+    {
+      "eyebrow": "Python · aiogram 3",
+      "url": "https://github.com/EnroXD1/osint-telegram-bot",
+      "link_label": "Исходный код",
+      "tone": "django",
+      "status": "Первая версия",
+      "title": "Открытый след",
+      "tags": [
+        "Python",
+        "aiogram",
+        "DNS / RDAP"
+      ],
+      "icon": "travel_explore",
+      "description": "Telegram-бот для работы с открытыми источниками: DNS и RDAP для доменов и IP, декодирование VIN, проверка GitHub-профилей и карточки публичных Telegram-каналов. Автоматически распознаёт запросы и показывает источники."
     },
     {
       "eyebrow": "Python · Django",
@@ -178,7 +218,7 @@
     "about_heading": "Привет, я EnroXD",
     "about_paragraphs": [
       "Я студент третьего курса университета, увлечённый технологиями и всем, что связано с цифровым миром.",
-      "Сейчас активно изучаю основы программирования. В свободное время играю, смотрю фильмы и аниме, а ещё исследую новые технологии."
+      "Пишу Telegram-ботов на Python и создаю веб-инструменты на JavaScript. В свободное время играю, смотрю фильмы и аниме, а ещё исследую новые технологии."
     ],
     "footer_tagline": "built with curiosity and pizza."
   }

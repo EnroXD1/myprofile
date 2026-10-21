@@ -1,5 +1,5 @@
 const interestTones = new Set(['orange', 'plum', 'olive', 'blue', 'pink', 'gold']);
-const projectTones = new Set(['ai', 'django', 'profile']);
+const projectTones = new Set(['workshop', 'mes', 'ai', 'django', 'profile']);
 
 function createContentElement(tagName, className, text) {
     const element = document.createElement(tagName);
@@ -100,6 +100,17 @@ function renderProjects(projects) {
             tags.append(createContentElement('span', '', tag));
         });
 
+        const links = createContentElement('div', 'project-links');
+        const demoUrl = safeExternalUrl(project.demo_url, '');
+        if (demoUrl.startsWith('https:')) {
+            const demoLink = createContentElement('a', 'project-link');
+            demoLink.href = demoUrl;
+            demoLink.target = '_blank';
+            demoLink.rel = 'noreferrer';
+            demoLink.append(document.createTextNode('Открыть сайт'), materialIcon('north_east'));
+            links.append(demoLink);
+        }
+
         const link = createContentElement('a', 'project-link');
         link.href = safeExternalUrl(project.url);
         link.target = '_blank';
@@ -108,6 +119,7 @@ function renderProjects(projects) {
             document.createTextNode(String(project.link_label || 'Открыть проект')),
             materialIcon('north_east')
         );
+        links.append(link);
 
         card.append(
             head,
@@ -115,7 +127,7 @@ function renderProjects(projects) {
             createContentElement('h3', '', project.title || 'Без названия'),
             createContentElement('p', '', project.description || ''),
             tags,
-            link
+            links
         );
         return card;
     });

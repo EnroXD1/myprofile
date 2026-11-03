@@ -7,9 +7,9 @@
     "url": "https://t.me/EnroXD"
   },
   "focus_chips": [
-    "SysAdmin",
-    "Virtualization",
-    "Git"
+    "Python",
+    "TypeScript",
+    "Industrial IT"
   ],
   "skills": [
     {
@@ -27,6 +27,10 @@
     {
       "label": "JavaScript",
       "icon": "javascript"
+    },
+    {
+      "label": "TypeScript",
+      "icon": "integration_instructions"
     },
     {
       "label": "Git",
@@ -67,7 +71,7 @@
       "url": "https://steamcommunity.com/id/enroxd/"
     }
   ],
-  "projects_intro": "Веб-инструменты, Telegram-боты и учебные проекты. Здесь можно попробовать приложения и посмотреть, как они устроены.",
+  "projects_intro": "Плагины для Discord, веб-приложения и Telegram-боты. Здесь можно попробовать проекты и посмотреть, как они устроены.",
   "interests": [
     {
       "title": "Видеоигры",
@@ -118,6 +122,21 @@
   },
   "projects": [
     {
+      "eyebrow": "TypeScript · Vencord",
+      "url": "https://github.com/EnroXD1/WinYandexMusicRPC-Vencord",
+      "link_label": "Код и установщик",
+      "tone": "ai",
+      "status": "Релиз · v1.0.1",
+      "title": "WinYandexMusicRPC · Vencord",
+      "tags": [
+        "TypeScript",
+        "Discord",
+        "Windows / Ynison"
+      ],
+      "icon": "music_note",
+      "description": "Порт WinYandexMusicRPC от FozerG в плагин Vencord: трек, исполнитель, обложка и прогресс в статусе Discord. Получает музыку из медиасессий Windows или аккаунта Яндекс Музыки через Ynison."
+    },
+    {
       "eyebrow": "JavaScript · обработка медиа",
       "url": "https://github.com/EnroXD1/workshop-studio",
       "demo_url": "https://enroxd1.github.io/workshop-studio/",
@@ -154,7 +173,7 @@
       "url": "https://github.com/EnroXD1/gemini_telegram_bot",
       "link_label": "Исходный код",
       "tone": "ai",
-      "status": "Активный · v1.17.1",
+      "status": "Активный · v1.17.2",
       "title": "Gemini Telegram Bot",
       "tags": [
         "Python",
@@ -218,7 +237,7 @@
     "about_heading": "Привет, я EnroXD",
     "about_paragraphs": [
       "Я студент третьего курса университета, увлечённый технологиями и всем, что связано с цифровым миром.",
-      "Пишу Telegram-ботов на Python и создаю веб-инструменты на JavaScript. В свободное время играю, смотрю фильмы и аниме, а ещё исследую новые технологии."
+      "Пишу Telegram-ботов на Python, создаю веб-инструменты на JavaScript и плагины для Vencord на TypeScript. Изучаю промышленные информационные системы и интеграцию сервисов."
     ],
     "footer_tagline": "built with curiosity and pizza."
   }
